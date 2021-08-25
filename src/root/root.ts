@@ -1,15 +1,20 @@
-export {}
+import { ApiResponse } from '../shared/store/ApiStore/types';
+import { RepoItem } from '../store/GitHubStore/types';
+import GitHubStore from '../store/GitHubStore';
 
-// import GitHubStore from '../store/GitHubStore/GitHubStore';
+const gitHubStore = new GitHubStore();
 
-// const gitHubStore = new GitHubStore();
+const EXAMPLE_ORGANIZATION = 'ktsstudio';
 
-// const EXAMPLE_ORGANIZATION = 'ktsstudio';
+gitHubStore.getOrganizationReposList({
+  organizationName: EXAMPLE_ORGANIZATION
+}).then((result: ApiResponse<RepoItem[], any>) => {
+  if (result.success) {
+    console.log(result.data.map(repo => {
+      return repo.name;
+    }));
+  }
 
-// gitHubStore.getOrganizationReposList({
-//   organizationName: EXAMPLE_ORGANIZATION
-// }).then(result => {
-//   console.log(result); // в консоли появится список репозиториев в ktsstudio
-// })
+  console.log(result); // в консоли появится список репозиториев в ktsstudio
+})
 
-// // В ДЗ 1 Не требуется визуально в разметке отображать результат запроса к сети. Достаточно вывести в console.log
