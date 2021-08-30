@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
+import './root/root';
+
 function App() {
+
+  const sayHello: string = 'Hello';
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +20,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {sayHello}
         </a>
       </header>
     </div>
